@@ -3,6 +3,7 @@ package no.ntnu.WebTek.AppDevbackend.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,4 +20,11 @@ public class User {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
+
+
+    public User(String name, String username, String password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 }

@@ -27,7 +27,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUserName(username);
+        User user = userRepo.findByUsername(username);
         if (user == null){
             log.error("USer not found in the database");
             throw new UsernameNotFoundException("User not found in the database");
@@ -59,20 +59,20 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     }
 
     @Override
-    public void addRoleToUser(String userName, String roleName) {
+    public void addRoleToUser(String username, String roleName) {
 
-        log.info("Assigning role {} to user {}", roleName, userName);
-        User user = userRepo.findByUserName(userName);
+        log.info("Assigning role {} to user {}", roleName, username);
+        User user = userRepo.findByUsername(username);
         Role role = roleRepo.findByName(roleName);
         user.getRoles().add(role);
 
     }
 
     @Override
-    public User getUser(String userName) {
+    public User getUser(String username) {
 
-        log.info("Getting user {}", userName);
-        return userRepo.findByUserName(userName);
+        log.info("Getting user {}", username);
+        return userRepo.findByUsername(username);
     }
 
     @Override
