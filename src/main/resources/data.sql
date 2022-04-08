@@ -6,4 +6,4 @@ values ('dave', 'dave123', '$2a$10$nwbEjYKgcomq2rjUPge2JegqI.y4zEcNqRMPdqwFnd1yt
        ('chuck', 'ChuckIsBeast', '$2a$12$/NoknpFFPDlzL3kBryJfsur0yeYC2JFqAs7Fd79ypMP6PN/mtSYmC');
 
 insert into roles (username, role)
-values ('chuck', 'ROLE_USER'), ('chuck', 'ROLE_ADMIN'), ('dave', 'ROLE_USER');
+values ('ChuckIsBeast', 'ROLE_USER'), ('ChuckIsBeast', 'ROLE_ADMIN'), ('dave123', 'ROLE_USER');
