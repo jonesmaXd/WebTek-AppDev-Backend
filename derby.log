@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Apr 08 01:46:14 CEST 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-066b-ddf6-000002ab1098 
+Fri Apr 08 11:06:58 CEST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-086d-3b6c-00000289b770 
 on database directory memory:D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend\local with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/Users/nuke1/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
@@ -12,5 +12,5 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Fri Apr 08 01:46:15 CEST 2022:
-Shutting down instance a816c00e-0180-066b-ddf6-000002ab1098 on database directory memory:D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend\local with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
+Fri Apr 08 11:06:59 CEST 2022:
+Shutting down instance a816c00e-0180-086d-3b6c-00000289b770 on database directory memory:D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend\local with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
