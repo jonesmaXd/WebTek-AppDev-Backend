@@ -1,0 +1,61 @@
+package no.ntnu.WebTek.AppDevbackend;
+
+import no.ntnu.WebTek.AppDevbackend.model.Role;
+import no.ntnu.WebTek.AppDevbackend.model.User;
+import no.ntnu.WebTek.AppDevbackend.repository.RoleRepository;
+import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+
+/**
+ * A class which inserts some dummy data into the database, when Spring Boot app has started
+ */
+@Component
+public class TestDataInitializer implements ApplicationListener<ApplicationReadyEvent> {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    private final Logger logger = LoggerFactory.getLogger("DummyInit");
+
+    /**
+     * This method is called when the application is ready (loaded)
+     *
+     * @param event Event which we don't use :)
+     */
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent event) {
+        Optional<User> existingUser = userRepository.findByUsername("Jones");
+        if (existingUser.isEmpty()) {
+            logger.info("Importing test data...");
+            User Dahle = new User("Dahle", "$2a$12$QtfNTJc0SyfkWmdoUtKIw.Jf6A1fmEbywxIEbgrL4oxZfQ7mAK/k.");
+            User Jones = new User("Jones", "$2a$12$OQ13NatVxbEmX1czwhbUKeRv7ACfShEOP.lvbFcoPB0OYckDlfYyO");
+            User Ferskken = new User("Ferskken", "$2a$12$dAXOtaEKQoWoNX7kmeciHOyU9lYrP8LMHl723bXh7VqV54dV/v55K");
+            Role user = new Role("ROLE_USER");
+            Role admin = new Role("ROLE_ADMIN");
+            Dahle.addRole(user);
+            Dahle.addRole(admin);
+            Jones.addRole(user);
+            Ferskken.addRole(user);
+
+            roleRepository.save(user);
+            roleRepository.save(admin);
+
+            userRepository.save(Dahle);
+            userRepository.save(Jones);
+            userRepository.save(Ferskken);
+
+            logger.info("DONE importing test data");
+        } else {
+            logger.info("Users already in the database, not importing anything");
+        }
+    }
+}
