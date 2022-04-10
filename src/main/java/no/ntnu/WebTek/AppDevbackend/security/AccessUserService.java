@@ -28,4 +28,8 @@ public class AccessUserService implements UserDetailsService {
             throw new UsernameNotFoundException("User " + username + "not found");
         }
     }
+
+    public boolean doesUserExist (String username) {
+        return userRepository.existsUsersByUsername(username);
+    }
 }

@@ -49,7 +49,7 @@ public class UserController {
             || user.getPassword().trim().length() < 1) {
             //Invalid values - 400 BAD REQUEST - try again
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        } else if (userRepository.doesUserExist(user.getUsername())) {
+        } else if (userRepository.existsUsersByUsername(user.getUsername())) {
             //The user exists - 409 CONFLICT - the username already exists
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {

@@ -11,6 +11,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -49,9 +50,10 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
             roleRepository.save(user);
             roleRepository.save(admin);
 
-            userRepository.save(Dahle);
-            userRepository.save(Jones);
-            userRepository.save(Ferskken);
+//            userRepository.save(Dahle);
+//            userRepository.save(Jones);
+//            userRepository.save(Ferskken);
+            userRepository.saveAll(List.of(Dahle, Ferskken,Jones));
 
             logger.info("DONE importing test data");
         } else {

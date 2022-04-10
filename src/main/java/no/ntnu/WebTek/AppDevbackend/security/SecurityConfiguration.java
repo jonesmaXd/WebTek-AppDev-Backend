@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Allow JWT authentication
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/authenticate").permitAll()
+                .antMatchers("/authenticate", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
