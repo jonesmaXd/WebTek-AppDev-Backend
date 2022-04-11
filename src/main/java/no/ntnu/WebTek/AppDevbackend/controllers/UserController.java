@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * A simple REST API controller providing different endpoints
  */
@@ -58,5 +60,9 @@ public class UserController {
         }
     }
 
-
+    @GetMapping("/admin/getusers")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 }

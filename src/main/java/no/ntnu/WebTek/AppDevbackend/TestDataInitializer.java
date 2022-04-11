@@ -37,14 +37,18 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
         Optional<User> existingUser = userRepository.findByUsername("Jones");
         if (existingUser.isEmpty()) {
             logger.info("Importing test data...");
-            User Dahle = new User("Dahle", "$2a$12$QtfNTJc0SyfkWmdoUtKIw.Jf6A1fmEbywxIEbgrL4oxZfQ7mAK/k.");
+            //Hashed password: coke
+            User Dahle = new User("Dahle", "$2a$12$TXOIt376KS0kuMJz6T4xFeGctfC2YOdXT5ZZXk8OuVrEZwlhplaXu");
+            //Hashed password: Morgan
             User Jones = new User("Jones", "$2a$12$OQ13NatVxbEmX1czwhbUKeRv7ACfShEOP.lvbFcoPB0OYckDlfYyO");
+            //Hashed password: knob
             User Ferskken = new User("Ferskken", "$2a$12$dAXOtaEKQoWoNX7kmeciHOyU9lYrP8LMHl723bXh7VqV54dV/v55K");
             Role user = new Role("ROLE_USER");
             Role admin = new Role("ROLE_ADMIN");
             Dahle.addRole(user);
             Dahle.addRole(admin);
             Jones.addRole(user);
+            Jones.addRole(admin);
             Ferskken.addRole(user);
 
             roleRepository.save(user);
@@ -53,7 +57,7 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 //            userRepository.save(Dahle);
 //            userRepository.save(Jones);
 //            userRepository.save(Ferskken);
-            userRepository.saveAll(List.of(Dahle, Ferskken,Jones));
+            userRepository.saveAll(List.of(Dahle, Ferskken, Jones));
 
             logger.info("DONE importing test data");
         } else {
