@@ -60,6 +60,18 @@ public class UserController {
         }
     }
 
+    @GetMapping
+    public void getProducts() {
+        //TODO: Implement functionality to show all existing products
+    }
+
+    @PostMapping("/user/comment")
+    @PreAuthorize("hasRole('USER')")
+    public void addComment() {
+        //TODO: Implement functionality for a user to add a comment on a product
+    }
+
+
     @GetMapping("/admin/getusers")
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
