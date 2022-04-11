@@ -60,7 +60,7 @@ public class UserController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public void getProducts() {
         //TODO: Implement functionality to show all existing products
     }
