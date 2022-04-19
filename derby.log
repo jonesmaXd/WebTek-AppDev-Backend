@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Tue Apr 12 16:29:48 CEST 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-1e2e-3ac2-000002960aa8 
-on database directory memory:D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend\local with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
-Loaded from file:/C:/Users/nuke1/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+Tue Apr 19 14:37:57 CEST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-41d4-5737-0000040acd58 
+on database directory memory:D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend\local with class loader org.springframework.boot.loader.LaunchedURLClassLoader@e2144e4 
+Loaded from jar:file:/D:/NTNU/4.%20semester/Apputvikling/WebTek-AppDev-Backend/target/WebTek-AppDev-backend-0.0.1-SNAPSHOT.jar!/BOOT-INF/lib/derby-10.14.2.0.jar!/
 java.vendor=Oracle Corporation
 java.runtime.version=17.0.2+8-LTS-86
 user.dir=D:\NTNU\4. semester\Apputvikling\WebTek-AppDev-Backend

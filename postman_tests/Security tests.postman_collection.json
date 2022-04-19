@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "31c7c701-4fa1-4902-b472-af882f489139",
+		"name": "Security tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test 1 - GET /admin site without authorization",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/admin",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"admin"
+					]
+				},
+				"description": "Attempts to enter an admin site without being authorized"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 2 - POST /user invalid JWT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 123123abc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Dahle\",\r\n    \"password\": \"coke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/user",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				},
+				"description": "Admin user tries to enter /user with an invalid JWT token"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 3 - POST /authenticate invalid credentials",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"coke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": "Attempt to log in with invalid credentials"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 4 - POST /authenticate valid user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"jwt\", pm.response.json()[\"jwt\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123123",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ferskken\",\r\n    \"password\": \"knob\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": "Authenticates a valid admin user existing in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 5 - GET /user with valid user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ferskken\",\r\n    \"password\": \"knob\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/user",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				},
+				"description": "A valid user enters the user page"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 6 - GET /admin user enter admin page",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ferskken\",\r\n    \"password\": \"knob\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/admin",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"admin"
+					]
+				},
+				"description": "User tries to enter an admin page, is denied and recieves 403 forbidden"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 7 - POST /authenticate valid admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Dahle\",\r\n    \"password\": \"coke\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": "Authenticates a valid admin existing in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "Test 8 - GET /admin with valid admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Dahle\",\r\n    \"password\": \"coke\"\r\n}"
+				},
+				"url": {
+					"raw": "http://gr05.appdev.cloudns.ph:8080/admin",
+					"protocol": "http",
+					"host": [
+						"gr05",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"port": "8080",
+					"path": [
+						"admin"
+					]
+				},
+				"description": "A valid admin enters the admin page"
+			},
+			"response": []
+		}
+	]
+}
