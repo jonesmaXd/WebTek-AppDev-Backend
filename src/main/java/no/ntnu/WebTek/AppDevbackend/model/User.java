@@ -38,7 +38,6 @@ public class User {
         return roles;
     }
 
-
     public Long getId() {
         return id;
     }

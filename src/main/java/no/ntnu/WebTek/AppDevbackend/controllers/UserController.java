@@ -71,7 +71,6 @@ public class UserController {
         //TODO: Implement functionality for a user to add a comment on a product
     }
 
-
     @GetMapping("/admin/getusers")
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {

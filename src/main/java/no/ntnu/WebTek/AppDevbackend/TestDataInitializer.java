@@ -1,7 +1,9 @@
 package no.ntnu.WebTek.AppDevbackend;
 
+import no.ntnu.WebTek.AppDevbackend.model.Product;
 import no.ntnu.WebTek.AppDevbackend.model.Role;
 import no.ntnu.WebTek.AppDevbackend.model.User;
+import no.ntnu.WebTek.AppDevbackend.repository.ProductRepository;
 import no.ntnu.WebTek.AppDevbackend.repository.RoleRepository;
 import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
 import org.slf4j.Logger;
@@ -24,6 +26,9 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     private final Logger logger = LoggerFactory.getLogger("DummyInit");
 
@@ -54,10 +59,13 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
             roleRepository.save(user);
             roleRepository.save(admin);
 
-//            userRepository.save(Dahle);
-//            userRepository.save(Jones);
-//            userRepository.save(Ferskken);
             userRepository.saveAll(List.of(Dahle, Ferskken, Jones));
+
+            Product twoDayCourse = new Product(1L, "Two day course", "For newcomers and inexperienced", "4 hours for two days", 8000);
+            Product oneDayCourse = new Product(2L, "One day course", "For experienced who seek a refresh in knowledge", "6 hours for one day", 5000);
+            Product consultation = new Product(3L, "Consultation", "For specific inquiries", "Up to 1 hour", 1600);
+
+            productRepository.saveAll(List.of(twoDayCourse, oneDayCourse, consultation));
 
             logger.info("DONE importing test data");
         } else {

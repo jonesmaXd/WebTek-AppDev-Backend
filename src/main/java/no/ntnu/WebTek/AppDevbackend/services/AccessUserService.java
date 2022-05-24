@@ -1,7 +1,8 @@
-package no.ntnu.WebTek.AppDevbackend.security;
+package no.ntnu.WebTek.AppDevbackend.services;
 
 import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
 import no.ntnu.WebTek.AppDevbackend.model.User;
+import no.ntnu.WebTek.AppDevbackend.security.AccessUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
