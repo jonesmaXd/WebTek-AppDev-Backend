@@ -45,11 +45,11 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
         if (existingUser.isEmpty() && existingProduct.isEmpty()) {
             logger.info("Importing test data...");
             //Hashed password: coke
-            User Dahle = new User("Dahle", "$2a$12$TXOIt376KS0kuMJz6T4xFeGctfC2YOdXT5ZZXk8OuVrEZwlhplaXu");
+            User Dahle = new User("Dahle", "swag@gmail.com" ,"$2a$12$TXOIt376KS0kuMJz6T4xFeGctfC2YOdXT5ZZXk8OuVrEZwlhplaXu");
             //Hashed password: Morgan
-            User Jones = new User("Jones", "$2a$12$OQ13NatVxbEmX1czwhbUKeRv7ACfShEOP.lvbFcoPB0OYckDlfYyO");
+            User Jones = new User("Jones", "KIT@gmail.com" ,"$2a$12$OQ13NatVxbEmX1czwhbUKeRv7ACfShEOP.lvbFcoPB0OYckDlfYyO");
             //Hashed password: knob
-            User Ferskken = new User("Ferskken", "$2a$12$dAXOtaEKQoWoNX7kmeciHOyU9lYrP8LMHl723bXh7VqV54dV/v55K");
+            User Ferskken = new User("Ferskken","badrice@gmail.com" ,"$2a$12$dAXOtaEKQoWoNX7kmeciHOyU9lYrP8LMHl723bXh7VqV54dV/v55K");
             Role user = new Role("ROLE_USER");
             Role admin = new Role("ROLE_ADMIN");
             Dahle.addRole(user);

@@ -46,6 +46,10 @@ public class AccessUserService implements UserDetailsService {
         return userRepository.existsUsersByUsername(username);
     }
 
+    public boolean doesEmailExist (String email) {
+        return userRepository.existsUsersByEmail(email);
+    }
+
     /**
      * Try to create a new user
      *
@@ -53,16 +57,20 @@ public class AccessUserService implements UserDetailsService {
      * @param password Plaintext password of the new user
      * @return null when user created, error message on error
      */
-    public String tryCreateNewUser(String username, String password) {
+    public String tryCreateNewUser(String username, String email ,String password) {
         String errorMessage;
-        if ("".equals(username)) {
-            errorMessage = "Username can't be empty";
+        if ("".equals(username) || "".equals(email)) {
+            errorMessage = "Username or email can't be empty";
         } else if (doesUserExist(username)) {
             errorMessage = "Username already taken";
-        } else {
+
+        } else if(doesEmailExist(email)) {
+            errorMessage = "email already taken";
+        }
+        else {
             errorMessage = checkPasswordRequirements(password);
             if (errorMessage == null) {
-                createUser(username, password);
+                createUser(username, email, password);
             }
         }
         return errorMessage;
@@ -86,10 +94,10 @@ public class AccessUserService implements UserDetailsService {
      * @param username Username of the new user
      * @param password Plaintext password of the new user
      */
-    private void createUser(String username, String password) {
+    private void createUser(String username, String email , String password) {
         Role userRole = roleRepository.findOneByName("ROLE_USER");
         if (userRole != null) {
-            User user = new User(username, createHash(password));
+            User user = new User(username, email, createHash(password));
             user.addRole(userRole);
             userRepository.save(user);
         }

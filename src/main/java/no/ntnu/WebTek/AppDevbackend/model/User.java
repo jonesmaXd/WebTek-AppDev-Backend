@@ -10,6 +10,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
+    private String email;
     private String password;
     private boolean active = true;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -25,9 +26,10 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     public void setRoles(Set<Role> roles) {
@@ -77,5 +79,13 @@ public class User {
      */
     public void addRole(Role role) {
         roles.add(role);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
