@@ -1,4 +1,4 @@
-package no.ntnu.WebTek.AppDevbackend.security;
+package no.ntnu.WebTek.AppDevbackend.datatransferobject;
 
 /**
  * Data that we will send as a response to the user when the authentication is successful

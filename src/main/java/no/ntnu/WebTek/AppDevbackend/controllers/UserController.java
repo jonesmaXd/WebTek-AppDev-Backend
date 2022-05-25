@@ -2,6 +2,7 @@ package no.ntnu.WebTek.AppDevbackend.controllers;
 
 import no.ntnu.WebTek.AppDevbackend.model.User;
 import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
+import no.ntnu.WebTek.AppDevbackend.services.AccessUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private AccessUserService userService;
 
     @GetMapping("")
     public String home() {
@@ -44,36 +45,18 @@ public class UserController {
 //        authenticates and logs in a user
 //    }
 
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
-        if(user.getUsername() == null || user.getPassword() == null
-            || user.getUsername().trim().length() < 1
-            || user.getPassword().trim().length() < 1) {
-            //Invalid values - 400 BAD REQUEST - try again
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        } else if (userRepository.existsUsersByUsername(user.getUsername())) {
-            //The user exists - 409 CONFLICT - the username already exists
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-        } else {
-            //Everything went well - 201 CREATED - new user added
-            return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(user));
-        }
-    }
 
-    @GetMapping("/products")
-    public void getProducts() {
-        //TODO: Implement functionality to show all existing products
-    }
 
-    @PostMapping("/user/comment")
+    @PostMapping("/api/user/comment")
     @PreAuthorize("hasRole('USER')")
     public void addComment() {
         //TODO: Implement functionality for a user to add a comment on a product
     }
 
-    @GetMapping("/admin/getusers")
-    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/api/users")
     public List<User> getUsers() {
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
+
+
 }

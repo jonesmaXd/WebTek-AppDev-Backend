@@ -42,7 +42,7 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
         Optional<User> existingUser = userRepository.findByUsername("Jones");
         Optional<Product> existingProduct = productRepository.findByTitle("Two day course");
 
-        if (existingUser.isEmpty() || existingProduct.isEmpty()) {
+        if (existingUser.isEmpty() && existingProduct.isEmpty()) {
             logger.info("Importing test data...");
             //Hashed password: coke
             User Dahle = new User("Dahle", "$2a$12$TXOIt376KS0kuMJz6T4xFeGctfC2YOdXT5ZZXk8OuVrEZwlhplaXu");

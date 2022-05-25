@@ -1,4 +1,4 @@
-package no.ntnu.WebTek.AppDevbackend.security;
+package no.ntnu.WebTek.AppDevbackend.datatransferobject;
 
 /**
  * Data that the user will send in the login request
