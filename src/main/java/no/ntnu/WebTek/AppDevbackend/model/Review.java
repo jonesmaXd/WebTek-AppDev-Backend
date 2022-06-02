@@ -1,7 +1,9 @@
 package no.ntnu.WebTek.AppDevbackend.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 public class Review {
@@ -10,13 +12,13 @@ public class Review {
     @Column(name = "id", nullable = false)
 
     private Long id;
-    private int productId;
+    private Long productId;
     private String reviewUserName;
     private String reviewText;
     private int rating;
-    private Date date;
+    private LocalDate date;
 
-    public Review(Long id, int productId, String reviewUserName, String reviewText, int rating, Date date) {
+    public Review(Long id, Long productId, String reviewUserName, String reviewText, int rating, LocalDate date) {
         this.id = id;
         this.productId = productId;
         this.reviewUserName = reviewUserName;
@@ -37,11 +39,11 @@ public class Review {
         this.id = id;
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -69,11 +71,11 @@ public class Review {
         this.rating = rating;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

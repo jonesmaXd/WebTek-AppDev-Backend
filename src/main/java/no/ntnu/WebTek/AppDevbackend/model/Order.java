@@ -3,9 +3,9 @@ package no.ntnu.WebTek.AppDevbackend.model;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Entity
+
 public class Order {
-    @Id
+/*    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
@@ -65,5 +65,5 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 }

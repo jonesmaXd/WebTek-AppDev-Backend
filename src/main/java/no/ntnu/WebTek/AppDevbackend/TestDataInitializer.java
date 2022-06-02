@@ -1,9 +1,11 @@
 package no.ntnu.WebTek.AppDevbackend;
 
 import no.ntnu.WebTek.AppDevbackend.model.Product;
+import no.ntnu.WebTek.AppDevbackend.model.Review;
 import no.ntnu.WebTek.AppDevbackend.model.Role;
 import no.ntnu.WebTek.AppDevbackend.model.User;
 import no.ntnu.WebTek.AppDevbackend.repository.ProductRepository;
+import no.ntnu.WebTek.AppDevbackend.repository.ReviewRepository;
 import no.ntnu.WebTek.AppDevbackend.repository.RoleRepository;
 import no.ntnu.WebTek.AppDevbackend.repository.UserRepository;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +32,9 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     private final Logger logger = LoggerFactory.getLogger("DummyInit");
 
@@ -68,6 +74,10 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
             Product consultation = new Product(3L, "Consultation", "For specific inquiries", "Up to 1 hour", 1600);
 
             productRepository.saveAll(List.of(twoDayCourse, oneDayCourse, consultation));
+
+            Review reviewProduct1 = new Review(1L, twoDayCourse.getId(), Jones.getUsername(), "Amazing course by amazing people", 5, LocalDate.now());
+
+            reviewRepository.saveAll(List.of(reviewProduct1));
 
             logger.info("DONE importing test data");
         } else {

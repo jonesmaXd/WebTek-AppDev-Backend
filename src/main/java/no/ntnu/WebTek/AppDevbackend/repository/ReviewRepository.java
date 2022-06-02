@@ -1,4 +1,7 @@
 package no.ntnu.WebTek.AppDevbackend.repository;
 
-public interface ReviewRepository {
+import no.ntnu.WebTek.AppDevbackend.model.Review;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
