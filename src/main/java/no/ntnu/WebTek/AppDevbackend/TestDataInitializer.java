@@ -75,9 +75,10 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 
             productRepository.saveAll(List.of(twoDayCourse, oneDayCourse, consultation));
 
-            Review reviewProduct1 = new Review(1L, twoDayCourse.getId(), Jones.getUsername(), "Amazing course by amazing people", 5, LocalDate.now());
-
-            reviewRepository.saveAll(List.of(reviewProduct1));
+            Review review1Product1 = new Review(1L, twoDayCourse.getId(), Jones.getUsername(), "Amazing course by amazing people", 5, LocalDate.now());
+            Review review2Product2 = new Review(2L, oneDayCourse.getId(), Dahle.getUsername(), "Really enjoyed my stay!", 5, LocalDate.now());
+            Review review3Product1 = new Review(3L, twoDayCourse.getId(), Jones.getUsername(), "Jeg kunne gjerne betalt 8000kr igjen !!", 5, LocalDate.now());
+            reviewRepository.saveAll(List.of(review1Product1, review2Product2, review3Product1));
 
             logger.info("DONE importing test data");
         } else {
