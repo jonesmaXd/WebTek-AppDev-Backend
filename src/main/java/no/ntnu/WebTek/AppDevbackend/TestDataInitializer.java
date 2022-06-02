@@ -69,15 +69,15 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 
             userRepository.saveAll(List.of(Dahle, Ferskken, Jones));
 
-            Product twoDayCourse = new Product(1L, "Two day course", "For newcomers and inexperienced", "4 hours for two days", 8000);
-            Product oneDayCourse = new Product(2L, "One day course", "For experienced who seek a refresh in knowledge", "6 hours for one day", 5000);
-            Product consultation = new Product(3L, "Consultation", "For specific inquiries", "Up to 1 hour", 1600);
+            Product twoDayCourse = new Product( "Two day course", "For newcomers and inexperienced", "4 hours for two days", 8000);
+            Product oneDayCourse = new Product( "One day course", "For experienced who seek a refresh in knowledge", "6 hours for one day", 5000);
+            Product consultation = new Product("Consultation", "For specific inquiries", "Up to 1 hour", 1600);
 
             productRepository.saveAll(List.of(twoDayCourse, oneDayCourse, consultation));
 
-            Review review1Product1 = new Review(1L, twoDayCourse.getId(), Jones.getUsername(), "Amazing course by amazing people", 5, LocalDate.now());
-            Review review2Product2 = new Review(2L, oneDayCourse.getId(), Dahle.getUsername(), "Really enjoyed my stay!", 5, LocalDate.now());
-            Review review3Product1 = new Review(3L, twoDayCourse.getId(), Jones.getUsername(), "Jeg kunne gjerne betalt 8000kr igjen !!", 5, LocalDate.now());
+            Review review1Product1 = new Review(twoDayCourse.getId(), Jones.getUsername(), "Amazing course by amazing people", 5, LocalDate.now());
+            Review review2Product2 = new Review(oneDayCourse.getId(), Dahle.getUsername(), "Really enjoyed my stay!", 5, LocalDate.now());
+            Review review3Product1 = new Review(twoDayCourse.getId(), Jones.getUsername(), "Jeg kunne gjerne betalt 8000kr igjen !!", 5, LocalDate.now());
             reviewRepository.saveAll(List.of(review1Product1, review2Product2, review3Product1));
 
             logger.info("DONE importing test data");

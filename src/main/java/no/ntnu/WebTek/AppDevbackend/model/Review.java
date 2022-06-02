@@ -10,7 +10,6 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-
     private Long id;
     private Long productId;
     private String reviewUserName;
@@ -18,8 +17,7 @@ public class Review {
     private int rating;
     private LocalDate date;
 
-    public Review(Long id, Long productId, String reviewUserName, String reviewText, int rating, LocalDate date) {
-        this.id = id;
+    public Review(Long productId, String reviewUserName, String reviewText, int rating, LocalDate date) {
         this.productId = productId;
         this.reviewUserName = reviewUserName;
         this.reviewText = reviewText;

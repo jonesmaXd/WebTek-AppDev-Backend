@@ -57,7 +57,7 @@ public class AccessUserService implements UserDetailsService {
      * @param password Plaintext password of the new user
      * @return null when user created, error message on error
      */
-    public String tryCreateNewUser(String username, String email ,String password) {
+    public String tryCreateNewUser(String username, String email, String password) {
         String errorMessage;
         if ("".equals(username) || "".equals(email)) {
             errorMessage = "Username or email can't be empty";

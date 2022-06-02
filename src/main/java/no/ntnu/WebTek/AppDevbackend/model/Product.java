@@ -17,8 +17,7 @@ public class Product {
     private String groupSize;
     private String Date;
 
-    public Product(Long id, String title, String description, String duration, int price, String timeOfDay, String language, String groupSize, String date) {
-        this.id = id;
+    public Product(String title, String description, String duration, int price, String timeOfDay, String language, String groupSize, String date) {
         this.title = title;
         this.description = description;
         this.duration = duration;
@@ -29,8 +28,7 @@ public class Product {
         this.Date = date;
     }
 
-    public Product(Long id, String title, String description, String duration, int price) {
-        this.id = id;
+    public Product(String title, String description, String duration, int price) {
         this.title = title;
         this.description = description;
         this.duration = duration;
