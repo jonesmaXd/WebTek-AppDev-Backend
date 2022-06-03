@@ -15,15 +15,21 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @Autowired AccessUserService accessUserService;
+
     public List<Review> getAllReviews() {
         return reviewRepository.findAll();
     }
 
     public String createNewReview(Long productId, String reviewUserName, String reviewText, int rating) {
         String errorMessage = null;
-        if(StringValidators.isStringInvalid(reviewText)) {
-            errorMessage = "invalid review description";
-        } else {
+        if (!accessUserService.doesUserExist(reviewUserName)) {
+            errorMessage = "User does not exist.";
+        }
+        else if(StringValidators.isStringInvalid(reviewText)) {
+            errorMessage = "Unvalid review description";
+        }
+        else {
             Review review = new Review(productId, reviewUserName, reviewText, rating, LocalDate.now());
             reviewRepository.save(review);
         }

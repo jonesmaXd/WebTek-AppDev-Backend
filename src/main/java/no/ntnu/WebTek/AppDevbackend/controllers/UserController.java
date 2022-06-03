@@ -39,20 +39,6 @@ public class UserController {
         return "This is accessible only for ADMIN users";
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<User> login() {
-//        There is not actually need for a method like this because the /authenticate PostMapping
-//        authenticates and logs in a user
-//    }
-
-
-
-    @PostMapping("/api/user/comment")
-    @PreAuthorize("hasRole('USER')")
-    public void addComment() {
-        //TODO: Implement functionality for a user to add a comment on a product
-    }
-
     @GetMapping("/api/users")
     public List<User> getUsers() {
         return userService.getAllUsers();

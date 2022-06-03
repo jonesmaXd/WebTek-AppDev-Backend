@@ -9,6 +9,7 @@ import no.ntnu.WebTek.AppDevbackend.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +35,7 @@ public class ReviewController {
      *
      */
     @PostMapping("/api/addReview")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> addReview(@RequestBody ReviewDto reviewDto) {
         String errorMessage = reviewService.createNewReview(reviewDto.getProductId(),
                                                             reviewDto.getReviewUserName(),
