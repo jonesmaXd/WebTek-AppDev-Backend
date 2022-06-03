@@ -36,4 +36,8 @@ public class ReviewService {
         return errorMessage;
     }
 
+    public int getNumberOfReviewsByProduct(Long id) {
+        return reviewRepository.findAllByProductId(id).size();
+    }
+
 }
