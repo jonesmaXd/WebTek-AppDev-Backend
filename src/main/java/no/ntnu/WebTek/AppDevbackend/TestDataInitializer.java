@@ -69,9 +69,9 @@ public class TestDataInitializer implements ApplicationListener<ApplicationReady
 
             userRepository.saveAll(List.of(Dahle, Ferskken, Jones));
 
-            Product twoDayCourse = new Product( "Two day course", "For newcomers and inexperienced", "4 hours for two days", 8000);
-            Product oneDayCourse = new Product( "One day course", "For experienced who seek a refresh in knowledge", "6 hours for one day", 5000);
-            Product consultation = new Product("Consultation", "For specific inquiries", "Up to 1 hour", 1600);
+            Product twoDayCourse = new Product( "To dagers kurs", "For uerfarne nybegynnere", "4 timer over 2 dager", 8000);
+            Product oneDayCourse = new Product( "Dags kurs", "For erfarne som trenger en oppfriskning av ferdigheter", "6 timer", 5000);
+            Product consultation = new Product("Konsultasjon", "For spesifikke henvendelser", "Opptil en time", 1600);
 
             productRepository.saveAll(List.of(twoDayCourse, oneDayCourse, consultation));
 
