@@ -31,7 +31,7 @@ public class ReviewController {
     /**
      *
      */
-    @PostMapping("/api/addReview")
+    @PostMapping("/api/review/addReview")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> addReview(@RequestBody ReviewDto reviewDto) {
         String errorMessage = reviewService.createNewReview(reviewDto.getProductId(),
@@ -47,7 +47,20 @@ public class ReviewController {
         return response;
     }
 
-    @GetMapping("/api/review/{id}")
+    @DeleteMapping("/api/review/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> deleteReview(@PathVariable Long id) {
+        String errorMessage = reviewService.deleteReview(id);
+        ResponseEntity<String> response;
+        if(errorMessage == null) {
+            response = new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            response = new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+        }
+        return response;
+    }
+
+    @GetMapping("/api/review/getAll/{id}")
     public int getAllById(@PathVariable Long id) {
         return reviewService.getNumberOfReviewsByProduct(id);
     }
