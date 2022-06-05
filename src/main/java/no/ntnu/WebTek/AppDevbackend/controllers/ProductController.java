@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- *
+ * REST API controller serving endpoints for products
  */
 @RestController
 @CrossOrigin
@@ -20,9 +20,11 @@ public class ProductController {
     private ProductService productService;
 
     /**
+     * Gets all products in the database
      *
+     * @return List of all products
      */
-    @GetMapping("/api/products")
+    @GetMapping("/api/product/getAll")
     public List<Product> getAll() {
         return productService.getAllProducts();
     }

@@ -1,7 +1,7 @@
 package no.ntnu.WebTek.AppDevbackend.datatransferobject;
 
 /**
- *
+ *  Data the user will send to
  */
 public class SignupDto {
 

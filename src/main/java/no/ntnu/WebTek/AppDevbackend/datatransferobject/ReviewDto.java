@@ -1,5 +1,9 @@
 package no.ntnu.WebTek.AppDevbackend.datatransferobject;
 
+
+/**
+ * Data the user will send to a review endpoint
+ */
 public class ReviewDto {
     private Long productId;
     private String reviewUserName;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * A simple REST API controller providing different endpoints
+ * REST API controller serving endpoints for users
  */
 @RestController
 @CrossOrigin
@@ -22,27 +22,8 @@ public class UserController {
     @Autowired
     private AccessUserService userService;
 
-    @GetMapping("")
-    public String home() {
-        return "This is a public home page";
-    }
-
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('USER')")
-    public String userPage() {
-        return "This is accessible to all authorized users";
-    }
-
-    @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String adminPage() {
-        return "This is accessible only for ADMIN users";
-    }
-
-    @GetMapping("/api/users")
+    @GetMapping("/api/user/getAll")
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
-
-
 }

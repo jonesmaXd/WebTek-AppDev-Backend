@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller responsible for authentication
+ * Controller responsible for authentication and signing up
  */
 @RestController
 public class AuthenticationController {
