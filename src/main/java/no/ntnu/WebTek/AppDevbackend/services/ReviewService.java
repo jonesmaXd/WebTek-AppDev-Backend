@@ -49,6 +49,9 @@ public class ReviewService {
         else if(StringValidators.isStringInvalid(reviewText)) {
             errorMessage = "Unvalid review description";
         }
+        else if(rating < 1) {
+            errorMessage = "Review cannot be less than 1";
+        }
         else {
             Review review = new Review(productId, reviewUserName, reviewText, rating, LocalDate.now());
             reviewRepository.save(review);
