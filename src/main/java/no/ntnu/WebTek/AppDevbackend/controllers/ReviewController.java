@@ -1,6 +1,5 @@
 package no.ntnu.WebTek.AppDevbackend.controllers;
 
-import no.ntnu.WebTek.AppDevbackend.datatransferobject.ReviewDto;
 import no.ntnu.WebTek.AppDevbackend.model.Review;
 import no.ntnu.WebTek.AppDevbackend.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +32,17 @@ public class ReviewController {
     /**
      * Adds a review to the database
      *
-     * @param reviewDto the review object to be added
+     * @param review the review object to be added
      * @return Http 200 ok if product is successfully added, 400 bad request if unsuccessfully,
      * indicating the review had improper values
      */
     @PostMapping("/api/review/addReview")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<String> addReview(@RequestBody ReviewDto reviewDto) {
-        String errorMessage = reviewService.createNewReview(reviewDto.getProductId(),
-                                                            reviewDto.getReviewUserName(),
-                                                            reviewDto.getReviewText(),
-                                                            reviewDto.getRating());
+    public ResponseEntity<String> addReview(@RequestBody Review review) {
+        String errorMessage = reviewService.createNewReview(review.getProductId(),
+                                                            review.getReviewUserName(),
+                                                            review.getReviewText(),
+                                                            review.getRating());
         ResponseEntity<String> response;
         if (errorMessage == null) {
             response = new ResponseEntity<>(HttpStatus.OK);

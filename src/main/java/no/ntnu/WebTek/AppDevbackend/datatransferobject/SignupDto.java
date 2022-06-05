@@ -1,7 +1,9 @@
 package no.ntnu.WebTek.AppDevbackend.datatransferobject;
 
 /**
- *  Data the user will send to
+ *  Data the user will send to sign up a user
+ *  It is possible to use the User class instead of the SignUpDto, but if the User class
+ *  is updated to provide more functionality things could get complicated.
  */
 public class SignupDto {
 

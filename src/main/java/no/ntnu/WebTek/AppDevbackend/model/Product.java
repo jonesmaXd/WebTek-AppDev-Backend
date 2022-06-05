@@ -2,8 +2,11 @@ package no.ntnu.WebTek.AppDevbackend.model;
 
 import javax.persistence.*;
 
-@Entity(name = "product")
 
+/**
+ * Entity class for Products
+ */
+@Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

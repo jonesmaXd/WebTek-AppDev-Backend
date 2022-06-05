@@ -90,6 +90,7 @@ public class AccessUserService implements UserDetailsService {
 
     /**
      * Create a new user in the database
+     * A new user starts with a user role.
      *
      * @param username Username of the new user
      * @param password Plaintext password of the new user

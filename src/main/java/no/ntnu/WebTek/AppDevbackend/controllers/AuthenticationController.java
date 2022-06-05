@@ -1,7 +1,6 @@
 package no.ntnu.WebTek.AppDevbackend.controllers;
 
 import no.ntnu.WebTek.AppDevbackend.datatransferobject.SignupDto;
-import no.ntnu.WebTek.AppDevbackend.model.User;
 import no.ntnu.WebTek.AppDevbackend.datatransferobject.AuthenticationRequest;
 import no.ntnu.WebTek.AppDevbackend.datatransferobject.AuthenticationResponse;
 import no.ntnu.WebTek.AppDevbackend.security.JwtUtil;
@@ -71,25 +70,4 @@ public class AuthenticationController {
         return response;
     }
 
-//
-//    /**
-//     *
-//     * @param user
-//     * @return
-//     */
-//    @PostMapping("/api/register")
-//    public ResponseEntity<User> register(@RequestBody User user) {
-//        if(user.getUsername() == null || user.getPassword() == null
-//                || user.getUsername().trim().length() < 1
-//                || user.getPassword().trim().length() < 1) {
-//            //Invalid values - 400 BAD REQUEST - try again
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//        } else if (userService.doesUserExist(user.getUsername())) {
-//            //The user exists - 409 CONFLICT - the username already exists
-//            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-//        } else {
-//            //Everything went well - 201 CREATED - new user added
-//            return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
-//        }
-//    }
 }

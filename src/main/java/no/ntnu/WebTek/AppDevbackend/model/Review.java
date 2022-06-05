@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Entity class for Reviews
+ */
 @Entity
 public class Review {
     @Id

@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Entity class for a User role
+ */
 @Entity(name="roles")
 public class Role {
     @Id

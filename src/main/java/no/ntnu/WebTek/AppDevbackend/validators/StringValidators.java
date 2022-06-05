@@ -1,5 +1,8 @@
 package no.ntnu.WebTek.AppDevbackend.validators;
 
+/**
+ * Class containing methods to validate strings
+ */
 public class StringValidators {
 
     /**

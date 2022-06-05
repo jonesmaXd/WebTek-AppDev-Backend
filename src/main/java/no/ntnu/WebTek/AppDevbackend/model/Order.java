@@ -8,14 +8,12 @@ public class Order {
 /*    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
     private double purchaseAmount;
     private String orderDate;
     private Long userId;
     private Long productId;
 
-    public Order(Long id, double purchaseAmount, String orderDate, Long userId, Long productId) {
-        this.id = id;
+    public Order( double purchaseAmount, String orderDate, Long userId, Long productId) {
         this.purchaseAmount = purchaseAmount;
         this.orderDate = orderDate;
         this.userId = userId;
@@ -59,11 +57,5 @@ public class Order {
         this.productId = productId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }*/
 }
