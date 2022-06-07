@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Utility class for handling JWT tokens
